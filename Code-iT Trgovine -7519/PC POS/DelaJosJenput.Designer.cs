@@ -31,6 +31,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.gleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imamoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mENIJAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -61,6 +66,36 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "label2";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gleToolStripMenuItem,
+            this.imamoToolStripMenuItem,
+            this.mENIJAToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(692, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // gleToolStripMenuItem
+            // 
+            this.gleToolStripMenuItem.Name = "gleToolStripMenuItem";
+            this.gleToolStripMenuItem.Size = new System.Drawing.Size(36, 20);
+            this.gleToolStripMenuItem.Text = "Gle";
+            // 
+            // imamoToolStripMenuItem
+            // 
+            this.imamoToolStripMenuItem.Name = "imamoToolStripMenuItem";
+            this.imamoToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.imamoToolStripMenuItem.Text = "Imamo";
+            // 
+            // mENIJAToolStripMenuItem
+            // 
+            this.mENIJAToolStripMenuItem.Name = "mENIJAToolStripMenuItem";
+            this.mENIJAToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.mENIJAToolStripMenuItem.Text = "MENIJA";
+            // 
             // DelaJosJenput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -69,8 +104,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "DelaJosJenput";
             this.Text = "DelaJosJenput";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -81,5 +120,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem gleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem imamoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mENIJAToolStripMenuItem;
     }
 }
