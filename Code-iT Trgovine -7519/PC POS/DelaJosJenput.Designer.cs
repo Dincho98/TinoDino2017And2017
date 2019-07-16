@@ -35,6 +35,8 @@
             this.gleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imamoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENIJAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pukelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.samToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +73,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gleToolStripMenuItem,
             this.imamoToolStripMenuItem,
-            this.mENIJAToolStripMenuItem});
+            this.mENIJAToolStripMenuItem,
+            this.pukelToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(692, 24);
@@ -95,6 +98,21 @@
             this.mENIJAToolStripMenuItem.Name = "mENIJAToolStripMenuItem";
             this.mENIJAToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.mENIJAToolStripMenuItem.Text = "MENIJA";
+            // 
+            // pukelToolStripMenuItem
+            // 
+            this.pukelToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.samToolStripMenuItem});
+            this.pukelToolStripMenuItem.Name = "pukelToolStripMenuItem";
+            this.pukelToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.pukelToolStripMenuItem.Text = "pukel";
+            this.pukelToolStripMenuItem.Click += new System.EventHandler(this.pukelToolStripMenuItem_Click);
+            // 
+            // samToolStripMenuItem
+            // 
+            this.samToolStripMenuItem.Name = "samToolStripMenuItem";
+            this.samToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.samToolStripMenuItem.Text = "sam";
             // 
             // DelaJosJenput
             // 
@@ -124,5 +142,7 @@
         private System.Windows.Forms.ToolStripMenuItem gleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem imamoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mENIJAToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pukelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem samToolStripMenuItem;
     }
 }

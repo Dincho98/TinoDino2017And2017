@@ -21,5 +21,10 @@ namespace PCPOS
         {
             MessageBox.Show("jebote dela");
         }
+
+        private void pukelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
