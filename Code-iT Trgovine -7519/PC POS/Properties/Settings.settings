@@ -1,0 +1,347 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PCPOS.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="id_partner" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="id_roba" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PDV" Type="System.String" Scope="User">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="id_zaposlenik" Type="System.String" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="idSkladiste" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="defaultSkladiste" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="pc_pos_databaseConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=|DataDirectory|\pc_pos_database.sdf&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;Microsoft.SqlServerCe.Client.3.5&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=|DataDirectory|\pc_pos_database.sdf</Value>
+    </Setting>
+    <Setting Name="verzija_programa" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="br_konta" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PC_POS_WebReference_KonektorPostgres" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://46.229.245.211/KonektorPostgres.asmx</Value>
+    </Setting>
+    <Setting Name="PC_POS_pc1_konektor" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://new.pc1.hr/konektor.asmx</Value>
+    </Setting>
+    <Setting Name="trazi_robno_prvih" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="artikli_koji_su_na_skl" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="domena_za_sinkronizaciju" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://www.pc1.hr/pcpos/provjera_nadogradnje.php</Value>
+    </Setting>
+    <Setting Name="PC_POS_wsSoftKontrol_wsSoftKontrol" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://software.pc1.hr/wsSoftKontrol.asmx</Value>
+    </Setting>
+    <Setting Name="domena_za_nadogradnju" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://www.pc1.hr/pcpos/provjera_nadogradnje.php</Value>
+    </Setting>
+    <Setting Name="pohranjena_procedura_kolicina" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CREATE OR REPLACE FUNCTION postavi_kolicinu_sql_funkcija()
+          RETURNS void AS
+          $BODY$
+          BEGIN
+
+          --RACUNI
+          CREATE TEMP TABLE _racuni AS
+          SELECT sifra_robe AS sifra,id_skladiste as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM racun_stavke GROUP BY sifra_robe,id_skladiste;
+
+          --KALKULACIJE
+          CREATE TEMP TABLE _kalkulacije AS
+          SELECT sifra AS sifra,id_skladiste as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM kalkulacija_stavke GROUP BY sifra,id_skladiste;
+
+          --IZDATNICE
+          CREATE TEMP TABLE _izdatnice AS
+          SELECT sifra AS sifra,id_skladiste as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM izdatnica_stavke LEFT JOIN izdatnica ON izdatnica.broj=izdatnica_stavke.broj AND izdatnica.id_izdatnica=izdatnica_stavke.id_izdatnica GROUP BY sifra,id_skladiste;
+
+          --PRIMKE
+          CREATE TEMP TABLE _primke AS
+          SELECT sifra AS sifra,id_skladiste as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM primka_stavke LEFT JOIN primka ON primka.id_primka=primka_stavke.id_primka GROUP BY sifra,id_skladiste;
+
+          --FAKTURE
+          CREATE TEMP TABLE _fakture AS
+          SELECT sifra AS sifra,id_skladiste as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM faktura_stavke LEFT JOIN fakture ON fakture.broj_fakture = faktura_stavke.broj_fakture AND fakture.id_ducan=faktura_stavke.id_ducan AND fakture.id_kasa=faktura_stavke.id_kasa WHERE fakture.oduzmi_iz_skladista='1' GROUP BY sifra,id_skladiste;
+
+          --MEĐUSKLADIŠNICA IZ SKLADIŠTA
+          CREATE TEMP TABLE _meduskladisnica_iz_skladista AS
+          SELECT sifra AS sifra,meduskladisnica.id_skladiste_od as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM meduskladisnica_stavke LEFT JOIN meduskladisnica ON meduskladisnica.broj=meduskladisnica_stavke.broj AND meduskladisnica.id_skladiste_od=meduskladisnica_stavke.iz_skladista GROUP BY sifra,id_skladiste_od;
+
+          --MEĐUSKLADIŠNICA U SKLADIŠTE
+          CREATE TEMP TABLE _meduskladisnica_u_skladiste AS
+          SELECT sifra AS sifra,meduskladisnica.id_skladiste_do as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM meduskladisnica_stavke LEFT JOIN meduskladisnica ON meduskladisnica.broj=meduskladisnica_stavke.broj AND meduskladisnica.id_skladiste_od=meduskladisnica_stavke.iz_skladista GROUP BY sifra,id_skladiste_do;
+
+          --OTPREMNICA
+          CREATE TEMP TABLE _otpremnica AS
+          SELECT sifra_robe AS sifra,id_skladiste as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM otpremnica_stavke GROUP BY sifra_robe,id_skladiste;
+
+          --OTPIS ROBE
+          CREATE TEMP TABLE _otpis_robe AS
+          SELECT sifra AS sifra,id_skladiste as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM otpis_robe_stavke LEFT JOIN otpis_robe ON otpis_robe.broj=otpis_robe_stavke.broj GROUP BY sifra,id_skladiste;
+
+          --POVRAT ROBE
+          CREATE TEMP TABLE _povrat_robe AS
+          SELECT sifra AS sifra,id_skladiste as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM povrat_robe_stavke LEFT JOIN povrat_robe ON povrat_robe.broj=povrat_robe_stavke.broj GROUP BY sifra,id_skladiste;
+
+          --POCETNO
+          CREATE TEMP TABLE _pocetno AS
+          SELECT sifra AS sifra,id_skladiste as skladiste,COALESCE(CAST(REPLACE(kolicina,',','.') as NUMERIC),0) AS kolicina FROM pocetno GROUP BY sifra,id_skladiste,kolicina;
+
+          --RADNI NALOG STAVKE
+          CREATE TEMP TABLE _radni_nalog_stavke AS
+          SELECT sifra_robe AS sifra,id_skladiste as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM radni_nalog_stavke LEFT JOIN radni_nalog ON radni_nalog.broj_naloga=radni_nalog_stavke.broj_naloga GROUP BY sifra_robe,id_skladiste;
+
+          --RADNI NALOG STAVKE--&amp;gt;NORMATIVI
+          CREATE TEMP TABLE _radni_nalog_normativi AS
+          SELECT normativi_stavke.sifra_robe AS sifra,normativi_stavke.id_skladiste as skladiste,
+          COALESCE(SUM
+          (
+          CAST(REPLACE(kolicina,',','.') as NUMERIC)*
+          (SELECT SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)) FROM radni_nalog_stavke LEFT JOIN radni_nalog ON radni_nalog.broj_naloga=radni_nalog_stavke.broj_naloga
+          WHERE normativi.sifra_artikla=radni_nalog_stavke.sifra_robe
+          )
+          ),0) AS kolicina
+          FROM normativi_stavke
+          LEFT JOIN normativi ON normativi.broj_normativa = normativi_stavke.broj_normativa
+          GROUP BY sifra_robe,id_skladiste;
+
+          --NORMATIVI (NA USLUGU SE DODAJU PRODAJNI ARTIKLI)
+          CREATE TEMP TABLE _normativi_usluga AS
+          SELECT normativi_stavke.sifra_robe AS sifra,normativi_stavke.id_skladiste as skladiste,
+          COALESCE(SUM
+          (
+          CAST(REPLACE(kolicina,',','.') as NUMERIC)*
+          (SELECT SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)) FROM racun_stavke LEFT JOIN racuni ON racuni.broj_racuna=racun_stavke.broj_racuna AND racuni.id_ducan=racun_stavke.id_ducan AND racuni.id_kasa=racun_stavke.id_kasa
+          WHERE normativi.sifra_artikla=racun_stavke.sifra_robe
+          )
+          ),0) AS kolicina
+          FROM normativi_stavke
+          LEFT JOIN normativi ON normativi.broj_normativa = normativi_stavke.broj_normativa
+          LEFT JOIN roba ON roba.sifra=normativi.sifra_artikla
+          WHERE roba.oduzmi='NE'
+          GROUP BY sifra_robe,id_skladiste;
+
+          CREATE TEMP TABLE bitne_sifre AS
+          SELECT sifra FROM _racuni
+          UNION
+          SELECT sifra FROM _kalkulacije
+          UNION
+          SELECT sifra FROM _izdatnice
+          UNION
+          SELECT sifra FROM _fakture
+          UNION
+          SELECT sifra FROM _meduskladisnica_iz_skladista
+          UNION
+          SELECT sifra FROM _meduskladisnica_u_skladiste
+          UNION
+          SELECT sifra FROM _otpremnica
+          UNION
+          SELECT sifra FROM _otpis_robe
+          UNION
+          SELECT sifra FROM _povrat_robe
+          UNION
+          SELECT sifra FROM _pocetno
+          UNION
+          SELECT sifra FROM _radni_nalog_stavke
+          UNION
+          SELECT sifra FROM _radni_nalog_normativi
+          UNION
+          SELECT sifra FROM _normativi_usluga;
+
+          UPDATE roba_prodaja SET kolicina=
+          (
+          REPLACE(CAST(
+          COALESCE(
+          COALESCE((SELECT _pocetno.kolicina FROM _pocetno WHERE _pocetno.sifra=roba_prodaja.sifra AND _pocetno.skladiste=roba_prodaja.id_skladiste),0)
+          +
+          COALESCE((SELECT _kalkulacije.kolicina FROM _kalkulacije WHERE _kalkulacije.sifra=roba_prodaja.sifra AND _kalkulacije.skladiste=roba_prodaja.id_skladiste),0)
+          +
+          COALESCE((SELECT _radni_nalog_stavke.kolicina FROM _radni_nalog_stavke WHERE _radni_nalog_stavke.sifra=roba_prodaja.sifra AND _radni_nalog_stavke.skladiste=roba_prodaja.id_skladiste),0)
+          +
+          COALESCE((SELECT _primke.kolicina FROM _primke WHERE _primke.sifra=roba_prodaja.sifra AND _primke.skladiste=roba_prodaja.id_skladiste),0)
+          +
+          COALESCE((SELECT _meduskladisnica_u_skladiste.kolicina FROM _meduskladisnica_u_skladiste WHERE _meduskladisnica_u_skladiste.sifra=roba_prodaja.sifra AND _meduskladisnica_u_skladiste.skladiste=roba_prodaja.id_skladiste),0)
+          -
+          COALESCE((SELECT _racuni.kolicina FROM _racuni WHERE _racuni.sifra=roba_prodaja.sifra AND _racuni.skladiste=roba_prodaja.id_skladiste),0)
+          -
+          COALESCE((SELECT _izdatnice.kolicina FROM _izdatnice WHERE _izdatnice.sifra=roba_prodaja.sifra AND _izdatnice.skladiste=roba_prodaja.id_skladiste),0)
+          -
+          COALESCE((SELECT _fakture.kolicina FROM _fakture WHERE _fakture.sifra=roba_prodaja.sifra AND _fakture.skladiste=roba_prodaja.id_skladiste),0)
+          -
+          COALESCE((SELECT _meduskladisnica_iz_skladista.kolicina FROM _meduskladisnica_iz_skladista WHERE _meduskladisnica_iz_skladista.sifra=roba_prodaja.sifra AND _meduskladisnica_iz_skladista.skladiste=roba_prodaja.id_skladiste),0)
+          -
+          COALESCE((SELECT _otpremnica.kolicina FROM _otpremnica WHERE _otpremnica.sifra=roba_prodaja.sifra AND _otpremnica.skladiste=roba_prodaja.id_skladiste),0)
+          -
+          COALESCE((SELECT _otpis_robe.kolicina FROM _otpis_robe WHERE _otpis_robe.sifra=roba_prodaja.sifra AND _otpis_robe.skladiste=roba_prodaja.id_skladiste),0)
+          -
+          COALESCE((SELECT _povrat_robe.kolicina FROM _povrat_robe WHERE _povrat_robe.sifra=roba_prodaja.sifra AND _povrat_robe.skladiste=roba_prodaja.id_skladiste),0)
+          -
+          COALESCE((SELECT _radni_nalog_normativi.kolicina FROM _radni_nalog_normativi WHERE _radni_nalog_normativi.sifra=roba_prodaja.sifra AND _radni_nalog_normativi.skladiste=roba_prodaja.id_skladiste),0)
+          -
+          COALESCE((SELECT _normativi_usluga.kolicina FROM _normativi_usluga WHERE _normativi_usluga.sifra=roba_prodaja.sifra AND _normativi_usluga.skladiste=roba_prodaja.id_skladiste),0)
+          ,0)
+          AS character varying),'.',',')
+          ) WHERE sifra IN (SELECT sifra FROM bitne_sifre);
+          UPDATE roba_prodaja SET kolicina='0' WHERE sifra IN (SELECT sifra FROM roba WHERE oduzmi='NE');
+
+          END;
+          $BODY$ LANGUAGE plpgsql;</Value>
+    </Setting>
+    <Setting Name="pohranjena_procedura_kolicina_prema_sifri" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CREATE OR REPLACE FUNCTION postavi_kolicinu_sql_funkcija_prema_sifri(skup_sifra character varying)
+          RETURNS void AS
+          $BODY$
+          BEGIN
+
+          --RACUNI
+          CREATE TEMP TABLE _racuni AS
+          SELECT sifra_robe AS sifra,id_skladiste as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM racun_stavke GROUP BY sifra_robe,id_skladiste;
+
+          --KALKULACIJE
+          CREATE TEMP TABLE _kalkulacije AS
+          SELECT sifra AS sifra,id_skladiste as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM kalkulacija_stavke GROUP BY sifra,id_skladiste;
+
+          --IZDATNICE
+          CREATE TEMP TABLE _izdatnice AS
+          SELECT sifra AS sifra,id_skladiste as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM izdatnica_stavke LEFT JOIN izdatnica ON izdatnica.broj=izdatnica_stavke.broj AND izdatnica.id_izdatnica=izdatnica_stavke.id_izdatnica GROUP BY sifra,id_skladiste;
+
+          --PRIMKE
+          CREATE TEMP TABLE _primke AS
+          SELECT sifra AS sifra,id_skladiste as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM primka_stavke LEFT JOIN primka ON primka.id_primka=primka_stavke.id_primka GROUP BY sifra,id_skladiste;
+
+          --FAKTURE
+          CREATE TEMP TABLE _fakture AS
+          SELECT sifra AS sifra,id_skladiste as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM faktura_stavke LEFT JOIN fakture ON fakture.broj_fakture = faktura_stavke.broj_fakture AND fakture.id_ducan=faktura_stavke.id_ducan AND fakture.id_kasa=faktura_stavke.id_kasa WHERE fakture.oduzmi_iz_skladista='1' GROUP BY sifra,id_skladiste;
+
+          --MEĐUSKLADIŠNICA IZ SKLADIŠTA
+          CREATE TEMP TABLE _meduskladisnica_iz_skladista AS
+          SELECT sifra AS sifra,meduskladisnica.id_skladiste_od as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM meduskladisnica_stavke LEFT JOIN meduskladisnica ON meduskladisnica.broj=meduskladisnica_stavke.broj AND meduskladisnica.id_skladiste_od=meduskladisnica_stavke.iz_skladista GROUP BY sifra,id_skladiste_od;
+
+          --MEĐUSKLADIŠNICA U SKLADIŠTE
+          CREATE TEMP TABLE _meduskladisnica_u_skladiste AS
+          SELECT sifra AS sifra,meduskladisnica.id_skladiste_do as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM meduskladisnica_stavke LEFT JOIN meduskladisnica ON meduskladisnica.broj=meduskladisnica_stavke.broj AND meduskladisnica.id_skladiste_od=meduskladisnica_stavke.iz_skladista GROUP BY sifra,id_skladiste_do;
+
+          --OTPREMNICA
+          CREATE TEMP TABLE _otpremnica AS
+          SELECT sifra_robe AS sifra,id_skladiste as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM otpremnica_stavke GROUP BY sifra_robe,id_skladiste;
+
+          --OTPIS ROBE
+          CREATE TEMP TABLE _otpis_robe AS
+          SELECT sifra AS sifra,id_skladiste as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM otpis_robe_stavke LEFT JOIN otpis_robe ON otpis_robe.broj=otpis_robe_stavke.broj GROUP BY sifra,id_skladiste;
+
+          --POVRAT ROBE
+          CREATE TEMP TABLE _povrat_robe AS
+          SELECT sifra AS sifra,id_skladiste as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM povrat_robe_stavke LEFT JOIN povrat_robe ON povrat_robe.broj=povrat_robe_stavke.broj GROUP BY sifra,id_skladiste;
+
+          --POCETNO
+          CREATE TEMP TABLE _pocetno AS
+          SELECT sifra AS sifra,id_skladiste as skladiste,COALESCE(CAST(REPLACE(kolicina,',','.') as NUMERIC),0) AS kolicina FROM pocetno GROUP BY sifra,id_skladiste,kolicina;
+
+          --RADNI NALOG STAVKE
+          CREATE TEMP TABLE _radni_nalog_stavke AS
+          SELECT sifra_robe AS sifra,id_skladiste as skladiste,COALESCE(SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)),0) AS kolicina FROM radni_nalog_stavke LEFT JOIN radni_nalog ON radni_nalog.broj_naloga=radni_nalog_stavke.broj_naloga GROUP BY sifra_robe,id_skladiste;
+
+          --RADNI NALOG STAVKE--&amp;gt;NORMATIVI
+          CREATE TEMP TABLE _radni_nalog_normativi AS
+          SELECT normativi_stavke.sifra_robe AS sifra,normativi_stavke.id_skladiste as skladiste,
+          COALESCE(SUM
+          (
+          CAST(REPLACE(kolicina,',','.') as NUMERIC)*
+          (SELECT SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)) FROM radni_nalog_stavke LEFT JOIN radni_nalog ON radni_nalog.broj_naloga=radni_nalog_stavke.broj_naloga
+          WHERE normativi.sifra_artikla=radni_nalog_stavke.sifra_robe
+          )
+          ),0) AS kolicina
+          FROM normativi_stavke
+          LEFT JOIN normativi ON normativi.broj_normativa = normativi_stavke.broj_normativa
+          GROUP BY sifra_robe,id_skladiste;
+
+          --NORMATIVI (NA USLUGU SE DODAJU PRODAJNI ARTIKLI)
+          CREATE TEMP TABLE _normativi_usluga AS
+          SELECT normativi_stavke.sifra_robe AS sifra,normativi_stavke.id_skladiste as skladiste,
+          COALESCE(SUM
+          (
+          CAST(REPLACE(kolicina,',','.') as NUMERIC)*
+          (SELECT SUM(CAST(REPLACE(kolicina,',','.') as NUMERIC)) FROM racun_stavke LEFT JOIN racuni ON racuni.broj_racuna=racun_stavke.broj_racuna AND racuni.id_ducan=racun_stavke.id_ducan AND racuni.id_kasa=racun_stavke.id_kasa
+          WHERE normativi.sifra_artikla=racun_stavke.sifra_robe
+          )
+          ),0) AS kolicina
+          FROM normativi_stavke
+          LEFT JOIN normativi ON normativi.broj_normativa = normativi_stavke.broj_normativa
+          LEFT JOIN roba ON roba.sifra=normativi.sifra_artikla
+          WHERE roba.oduzmi='NE'
+          GROUP BY sifra_robe,id_skladiste;
+
+          UPDATE roba_prodaja SET kolicina=
+          (
+          REPLACE(CAST(
+          COALESCE(
+          COALESCE((SELECT _pocetno.kolicina FROM _pocetno WHERE _pocetno.sifra=roba_prodaja.sifra AND _pocetno.skladiste=roba_prodaja.id_skladiste),0)
+          +
+          COALESCE((SELECT _kalkulacije.kolicina FROM _kalkulacije WHERE _kalkulacije.sifra=roba_prodaja.sifra AND _kalkulacije.skladiste=roba_prodaja.id_skladiste),0)
+          +
+          COALESCE((SELECT _radni_nalog_stavke.kolicina FROM _radni_nalog_stavke WHERE _radni_nalog_stavke.sifra=roba_prodaja.sifra AND _radni_nalog_stavke.skladiste=roba_prodaja.id_skladiste),0)
+          +
+          COALESCE((SELECT _primke.kolicina FROM _primke WHERE _primke.sifra=roba_prodaja.sifra AND _primke.skladiste=roba_prodaja.id_skladiste),0)
+          +
+          COALESCE((SELECT _meduskladisnica_u_skladiste.kolicina FROM _meduskladisnica_u_skladiste WHERE _meduskladisnica_u_skladiste.sifra=roba_prodaja.sifra AND _meduskladisnica_u_skladiste.skladiste=roba_prodaja.id_skladiste),0)
+          -
+          COALESCE((SELECT _racuni.kolicina FROM _racuni WHERE _racuni.sifra=roba_prodaja.sifra AND _racuni.skladiste=roba_prodaja.id_skladiste),0)
+          -
+          COALESCE((SELECT _izdatnice.kolicina FROM _izdatnice WHERE _izdatnice.sifra=roba_prodaja.sifra AND _izdatnice.skladiste=roba_prodaja.id_skladiste),0)
+          -
+          COALESCE((SELECT _fakture.kolicina FROM _fakture WHERE _fakture.sifra=roba_prodaja.sifra AND _fakture.skladiste=roba_prodaja.id_skladiste),0)
+          -
+          COALESCE((SELECT _meduskladisnica_iz_skladista.kolicina FROM _meduskladisnica_iz_skladista WHERE _meduskladisnica_iz_skladista.sifra=roba_prodaja.sifra AND _meduskladisnica_iz_skladista.skladiste=roba_prodaja.id_skladiste),0)
+          -
+          COALESCE((SELECT _otpremnica.kolicina FROM _otpremnica WHERE _otpremnica.sifra=roba_prodaja.sifra AND _otpremnica.skladiste=roba_prodaja.id_skladiste),0)
+          -
+          COALESCE((SELECT _otpis_robe.kolicina FROM _otpis_robe WHERE _otpis_robe.sifra=roba_prodaja.sifra AND _otpis_robe.skladiste=roba_prodaja.id_skladiste),0)
+          -
+          COALESCE((SELECT _povrat_robe.kolicina FROM _povrat_robe WHERE _povrat_robe.sifra=roba_prodaja.sifra AND _povrat_robe.skladiste=roba_prodaja.id_skladiste),0)
+          -
+          COALESCE((SELECT _radni_nalog_normativi.kolicina FROM _radni_nalog_normativi WHERE _radni_nalog_normativi.sifra=roba_prodaja.sifra AND _radni_nalog_normativi.skladiste=roba_prodaja.id_skladiste),0)
+          -
+          COALESCE((SELECT _normativi_usluga.kolicina FROM _normativi_usluga WHERE _normativi_usluga.sifra=roba_prodaja.sifra AND _normativi_usluga.skladiste=roba_prodaja.id_skladiste),0)
+          ,0)
+          AS character varying),'.',',')
+          ) WHERE sifra IN (skup_sifra);
+          UPDATE roba_prodaja SET kolicina='0' WHERE sifra IN (SELECT sifra FROM roba WHERE oduzmi='NE');
+
+          DROP TABLE IF EXISTS _racuni;
+          DROP TABLE IF EXISTS _primke;
+          DROP TABLE IF EXISTS _kalkulacije;
+          DROP TABLE IF EXISTS _izdatnice;
+          DROP TABLE IF EXISTS _fakture;
+          DROP TABLE IF EXISTS _meduskladisnica_iz_skladista;
+          DROP TABLE IF EXISTS _meduskladisnica_u_skladiste;
+          DROP TABLE IF EXISTS _otpremnica;
+          DROP TABLE IF EXISTS _otpis_robe;
+          DROP TABLE IF EXISTS _povrat_robe;
+          DROP TABLE IF EXISTS _pocetno;
+          DROP TABLE IF EXISTS _radni_nalog_stavke;
+          DROP TABLE IF EXISTS _radni_nalog_normativi;
+          DROP TABLE IF EXISTS _normativi_usluga;
+
+          END;
+          $BODY$ LANGUAGE plpgsql;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PC POS", "PC POS\PC POS.csproj", "{F92B694A-66F9-40C6-9176-5CA2D7306642}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PC POS Update", "PC POS Update\PC POS Update.csproj", "{2B6279AA-533B-42C6-A4D3-2943C6AE5736}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F92B694A-66F9-40C6-9176-5CA2D7306642}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{F92B694A-66F9-40C6-9176-5CA2D7306642}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{F92B694A-66F9-40C6-9176-5CA2D7306642}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{F92B694A-66F9-40C6-9176-5CA2D7306642}.Debug|x86.ActiveCfg = Debug|x86
+		{F92B694A-66F9-40C6-9176-5CA2D7306642}.Debug|x86.Build.0 = Debug|x86
+		{F92B694A-66F9-40C6-9176-5CA2D7306642}.Release|Any CPU.ActiveCfg = Release|x86
+		{F92B694A-66F9-40C6-9176-5CA2D7306642}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{F92B694A-66F9-40C6-9176-5CA2D7306642}.Release|Mixed Platforms.Build.0 = Release|x86
+		{F92B694A-66F9-40C6-9176-5CA2D7306642}.Release|x86.ActiveCfg = Release|x86
+		{F92B694A-66F9-40C6-9176-5CA2D7306642}.Release|x86.Build.0 = Release|x86
+		{2B6279AA-533B-42C6-A4D3-2943C6AE5736}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{2B6279AA-533B-42C6-A4D3-2943C6AE5736}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{2B6279AA-533B-42C6-A4D3-2943C6AE5736}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{2B6279AA-533B-42C6-A4D3-2943C6AE5736}.Debug|x86.ActiveCfg = Debug|x86
+		{2B6279AA-533B-42C6-A4D3-2943C6AE5736}.Debug|x86.Build.0 = Debug|x86
+		{2B6279AA-533B-42C6-A4D3-2943C6AE5736}.Release|Any CPU.ActiveCfg = Release|x86
+		{2B6279AA-533B-42C6-A4D3-2943C6AE5736}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{2B6279AA-533B-42C6-A4D3-2943C6AE5736}.Release|Mixed Platforms.Build.0 = Release|x86
+		{2B6279AA-533B-42C6-A4D3-2943C6AE5736}.Release|x86.ActiveCfg = Release|x86
+		{2B6279AA-533B-42C6-A4D3-2943C6AE5736}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D3AC54C-48E4-4DE0-9B96-480BF82B4CE8}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSRacuniPromet" targetNamespace="http://tempuri.org/DSRacuniPromet.xsd" xmlns:mstns="http://tempuri.org/DSRacuniPromet.xsd" xmlns="http://tempuri.org/DSRacuniPromet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSRacuniPromet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSRacuniPromet" msprop:Generator_UserDSName="DSRacuniPromet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DTRRacuniPromet" msprop:Generator_TableClassName="DTRRacuniPrometDataTable" msprop:Generator_TableVarName="tableDTRRacuniPromet" msprop:Generator_RowChangedName="DTRRacuniPrometRowChanged" msprop:Generator_TablePropName="DTRRacuniPromet" msprop:Generator_RowDeletingName="DTRRacuniPrometRowDeleting" msprop:Generator_RowChangingName="DTRRacuniPrometRowChanging" msprop:Generator_RowEvHandlerName="DTRRacuniPrometRowChangeEventHandler" msprop:Generator_RowDeletedName="DTRRacuniPrometRowDeleted" msprop:Generator_RowClassName="DTRRacuniPrometRow" msprop:Generator_UserTableName="DTRRacuniPromet" msprop:Generator_RowEvArgName="DTRRacuniPrometRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="kolicina" msprop:Generator_ColumnVarNameInTable="columnkolicina" msprop:Generator_ColumnPropNameInRow="kolicina" msprop:Generator_ColumnPropNameInTable="kolicinaColumn" msprop:Generator_UserColumnName="kolicina" type="xs:int" minOccurs="0" />
+              <xs:element name="sifra" msprop:Generator_ColumnVarNameInTable="columnsifra" msprop:Generator_ColumnPropNameInRow="sifra" msprop:Generator_ColumnPropNameInTable="sifraColumn" msprop:Generator_UserColumnName="sifra" type="xs:string" minOccurs="0" />
+              <xs:element name="mpc" msprop:Generator_ColumnVarNameInTable="columnmpc" msprop:Generator_ColumnPropNameInRow="mpc" msprop:Generator_ColumnPropNameInTable="mpcColumn" msprop:Generator_UserColumnName="mpc" type="xs:decimal" minOccurs="0" />
+              <xs:element name="vpc" msprop:Generator_ColumnVarNameInTable="columnvpc" msprop:Generator_ColumnPropNameInRow="vpc" msprop:Generator_ColumnPropNameInTable="vpcColumn" msprop:Generator_UserColumnName="vpc" type="xs:decimal" minOccurs="0" />
+              <xs:element name="naziv" msprop:Generator_ColumnVarNameInTable="columnnaziv" msprop:Generator_ColumnPropNameInRow="naziv" msprop:Generator_ColumnPropNameInTable="nazivColumn" msprop:Generator_UserColumnName="naziv" type="xs:string" minOccurs="0" />
+              <xs:element name="datod" msprop:Generator_ColumnVarNameInTable="columndatod" msprop:Generator_ColumnPropNameInRow="datod" msprop:Generator_ColumnPropNameInTable="datodColumn" msprop:Generator_UserColumnName="datod" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="datdo" msprop:Generator_ColumnVarNameInTable="columndatdo" msprop:Generator_ColumnPropNameInRow="datdo" msprop:Generator_ColumnPropNameInTable="datdoColumn" msprop:Generator_UserColumnName="datdo" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="nbc" msprop:Generator_ColumnVarNameInTable="columnnbc" msprop:Generator_ColumnPropNameInRow="nbc" msprop:Generator_ColumnPropNameInTable="nbcColumn" msprop:Generator_UserColumnName="nbc" type="xs:decimal" minOccurs="0" />
+              <xs:element name="rabat" msprop:Generator_ColumnVarNameInTable="columnrabat" msprop:Generator_ColumnPropNameInRow="rabat" msprop:Generator_ColumnPropNameInTable="rabatColumn" msprop:Generator_UserColumnName="rabat" type="xs:decimal" minOccurs="0" />
+              <xs:element name="mpcRabat" msprop:Generator_ColumnVarNameInTable="columnmpcRabat" msprop:Generator_ColumnPropNameInRow="mpcRabat" msprop:Generator_ColumnPropNameInTable="mpcRabatColumn" msprop:Generator_UserColumnName="mpcRabat" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

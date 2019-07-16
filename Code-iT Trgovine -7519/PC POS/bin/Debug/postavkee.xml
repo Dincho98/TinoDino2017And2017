@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<postavke>
+  <email>
+    <gmail email="email@gmail.com" password="00000000000" sender="" subject="Test" content="imate dog sastanak." salji_meni="False" podsjetime="False" temarodj="Sretan rodjendan!" sadrzajrodj="Poruka cestitke" saljicestitku="False" satidoporuke="10" var1="100" var2="180" var3="220" var4="45" var5="109" var6="150" />
+  </email>
+</postavke>

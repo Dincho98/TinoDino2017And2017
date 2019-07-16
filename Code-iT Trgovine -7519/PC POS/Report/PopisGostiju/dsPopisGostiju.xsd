@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPopisGostiju" targetNamespace="http://tempuri.org/dsPopisGostiju.xsd" xmlns:mstns="http://tempuri.org/dsPopisGostiju.xsd" xmlns="http://tempuri.org/dsPopisGostiju.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPopisGostiju" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsPopisGostiju" msprop:Generator_UserDSName="dsPopisGostiju">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtGost" msprop:Generator_TableClassName="dtGostDataTable" msprop:Generator_TableVarName="tabledtGost" msprop:Generator_RowChangedName="dtGostRowChanged" msprop:Generator_TablePropName="dtGost" msprop:Generator_RowDeletingName="dtGostRowDeleting" msprop:Generator_RowChangingName="dtGostRowChanging" msprop:Generator_RowEvHandlerName="dtGostRowChangeEventHandler" msprop:Generator_RowDeletedName="dtGostRowDeleted" msprop:Generator_RowClassName="dtGostRow" msprop:Generator_UserTableName="dtGost" msprop:Generator_RowEvArgName="dtGostRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="broj" msprop:Generator_ColumnVarNameInTable="columnbroj" msprop:Generator_ColumnPropNameInRow="broj" msprop:Generator_ColumnPropNameInTable="brojColumn" msprop:Generator_UserColumnName="broj" type="xs:string" minOccurs="0" />
+              <xs:element name="prezimeime" msprop:Generator_ColumnVarNameInTable="columnprezimeime" msprop:Generator_ColumnPropNameInRow="prezimeime" msprop:Generator_ColumnPropNameInTable="prezimeimeColumn" msprop:Generator_UserColumnName="prezimeime" type="xs:string" minOccurs="0" />
+              <xs:element name="brojdokumenta" msprop:Generator_ColumnVarNameInTable="columnbrojdokumenta" msprop:Generator_ColumnPropNameInRow="brojdokumenta" msprop:Generator_ColumnPropNameInTable="brojdokumentaColumn" msprop:Generator_UserColumnName="brojdokumenta" type="xs:string" minOccurs="0" />
+              <xs:element name="usluga" msprop:Generator_ColumnVarNameInTable="columnusluga" msprop:Generator_ColumnPropNameInRow="usluga" msprop:Generator_ColumnPropNameInTable="uslugaColumn" msprop:Generator_UserColumnName="usluga" type="xs:string" minOccurs="0" />
+              <xs:element name="datumpocetka" msprop:Generator_ColumnVarNameInTable="columndatumpocetka" msprop:Generator_ColumnPropNameInRow="datumpocetka" msprop:Generator_ColumnPropNameInTable="datumpocetkaColumn" msprop:Generator_UserColumnName="datumpocetka" type="xs:string" minOccurs="0" />
+              <xs:element name="datumkraja" msprop:Generator_ColumnVarNameInTable="columndatumkraja" msprop:Generator_ColumnPropNameInRow="datumkraja" msprop:Generator_ColumnPropNameInTable="datumkrajaColumn" msprop:Generator_UserColumnName="datumkraja" type="xs:string" minOccurs="0" />
+              <xs:element name="primjedba" msprop:Generator_ColumnVarNameInTable="columnprimjedba" msprop:Generator_ColumnPropNameInRow="primjedba" msprop:Generator_ColumnPropNameInTable="primjedbaColumn" msprop:Generator_UserColumnName="primjedba" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

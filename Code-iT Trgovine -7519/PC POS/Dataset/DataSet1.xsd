@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DSavansiFak" msprop:Generator_TableClassName="DSavansiFakDataTable" msprop:Generator_TableVarName="tableDSavansiFak" msprop:Generator_RowChangedName="DSavansiFakRowChanged" msprop:Generator_TablePropName="DSavansiFak" msprop:Generator_RowDeletingName="DSavansiFakRowDeleting" msprop:Generator_RowChangingName="DSavansiFakRowChanging" msprop:Generator_RowEvHandlerName="DSavansiFakRowChangeEventHandler" msprop:Generator_RowDeletedName="DSavansiFakRowDeleted" msprop:Generator_RowClassName="DSavansiFakRow" msprop:Generator_UserTableName="DSavansiFak" msprop:Generator_RowEvArgName="DSavansiFakRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="natpisi_avans" msprop:Generator_ColumnVarNameInTable="columnnatpisi_avans" msprop:Generator_ColumnPropNameInRow="natpisi_avans" msprop:Generator_ColumnPropNameInTable="natpisi_avansColumn" msprop:Generator_UserColumnName="natpisi_avans" type="xs:string" minOccurs="0" />
+              <xs:element name="porezi_avans" msprop:Generator_ColumnVarNameInTable="columnporezi_avans" msprop:Generator_ColumnPropNameInRow="porezi_avans" msprop:Generator_ColumnPropNameInTable="porezi_avansColumn" msprop:Generator_UserColumnName="porezi_avans" type="xs:string" minOccurs="0" />
+              <xs:element name="napomena_avans_ukupno" msprop:Generator_ColumnVarNameInTable="columnnapomena_avans_ukupno" msprop:Generator_ColumnPropNameInRow="napomena_avans_ukupno" msprop:Generator_ColumnPropNameInTable="napomena_avans_ukupnoColumn" msprop:Generator_UserColumnName="napomena_avans_ukupno" type="xs:string" minOccurs="0" />
+              <xs:element name="avans_porez_natpis" msprop:Generator_ColumnVarNameInTable="columnavans_porez_natpis" msprop:Generator_ColumnPropNameInRow="avans_porez_natpis" msprop:Generator_ColumnPropNameInTable="avans_porez_natpisColumn" msprop:Generator_UserColumnName="avans_porez_natpis" type="xs:string" minOccurs="0" />
+              <xs:element name="avans_iznosi" msprop:Generator_ColumnVarNameInTable="columnavans_iznosi" msprop:Generator_ColumnPropNameInRow="avans_iznosi" msprop:Generator_ColumnPropNameInTable="avans_iznosiColumn" msprop:Generator_UserColumnName="avans_iznosi" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

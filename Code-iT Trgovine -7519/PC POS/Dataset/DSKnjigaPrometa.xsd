@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSKnjigaPrometa" targetNamespace="http://tempuri.org/DSKnjigaPrometa.xsd" xmlns:mstns="http://tempuri.org/DSKnjigaPrometa.xsd" xmlns="http://tempuri.org/DSKnjigaPrometa.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSKnjigaPrometa" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSKnjigaPrometa" msprop:Generator_UserDSName="DSKnjigaPrometa">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DTknjigaPrometa" msprop:Generator_TableClassName="DTknjigaPrometaDataTable" msprop:Generator_TableVarName="tableDTknjigaPrometa" msprop:Generator_RowChangedName="DTknjigaPrometaRowChanged" msprop:Generator_TablePropName="DTknjigaPrometa" msprop:Generator_RowDeletingName="DTknjigaPrometaRowDeleting" msprop:Generator_RowChangingName="DTknjigaPrometaRowChanging" msprop:Generator_RowEvHandlerName="DTknjigaPrometaRowChangeEventHandler" msprop:Generator_RowDeletedName="DTknjigaPrometaRowDeleted" msprop:Generator_RowClassName="DTknjigaPrometaRow" msprop:Generator_UserTableName="DTknjigaPrometa" msprop:Generator_RowEvArgName="DTknjigaPrometaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="redniBroj" msprop:Generator_ColumnVarNameInTable="columnredniBroj" msprop:Generator_ColumnPropNameInRow="redniBroj" msprop:Generator_ColumnPropNameInTable="redniBrojColumn" msprop:Generator_UserColumnName="redniBroj" type="xs:string" minOccurs="0" />
+              <xs:element name="brojRacuna" msprop:Generator_ColumnVarNameInTable="columnbrojRacuna" msprop:Generator_ColumnPropNameInRow="brojRacuna" msprop:Generator_ColumnPropNameInTable="brojRacunaColumn" msprop:Generator_UserColumnName="brojRacuna" type="xs:string" minOccurs="0" />
+              <xs:element name="datum" msprop:Generator_ColumnVarNameInTable="columndatum" msprop:Generator_ColumnPropNameInRow="datum" msprop:Generator_ColumnPropNameInTable="datumColumn" msprop:Generator_UserColumnName="datum" type="xs:string" minOccurs="0" />
+              <xs:element name="iznos" msprop:Generator_ColumnVarNameInTable="columniznos" msprop:Generator_ColumnPropNameInRow="iznos" msprop:Generator_ColumnPropNameInTable="iznosColumn" msprop:Generator_UserColumnName="iznos" type="xs:decimal" minOccurs="0" />
+              <xs:element name="nacinPlacanja" msprop:Generator_ColumnVarNameInTable="columnnacinPlacanja" msprop:Generator_ColumnPropNameInRow="nacinPlacanja" msprop:Generator_ColumnPropNameInTable="nacinPlacanjaColumn" msprop:Generator_UserColumnName="nacinPlacanja" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

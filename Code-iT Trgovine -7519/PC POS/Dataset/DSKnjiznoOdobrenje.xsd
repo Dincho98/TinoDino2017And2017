@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSKnjiznoOdobrenje" targetNamespace="http://tempuri.org/DSKnjiznoOdobrenje.xsd" xmlns:mstns="http://tempuri.org/DSKnjiznoOdobrenje.xsd" xmlns="http://tempuri.org/DSKnjiznoOdobrenje.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSKnjiznoOdobrenje" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSKnjiznoOdobrenje" msprop:Generator_UserDSName="DSKnjiznoOdobrenje">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtKnjiznoOdobrenje" msprop:Generator_TableClassName="dtKnjiznoOdobrenjeDataTable" msprop:Generator_TableVarName="tabledtKnjiznoOdobrenje" msprop:Generator_TablePropName="dtKnjiznoOdobrenje" msprop:Generator_RowDeletingName="dtKnjiznoOdobrenjeRowDeleting" msprop:Generator_UserTableName="dtKnjiznoOdobrenje" msprop:Generator_RowChangingName="dtKnjiznoOdobrenjeRowChanging" msprop:Generator_RowEvHandlerName="dtKnjiznoOdobrenjeRowChangeEventHandler" msprop:Generator_RowDeletedName="dtKnjiznoOdobrenjeRowDeleted" msprop:Generator_RowEvArgName="dtKnjiznoOdobrenjeRowChangeEvent" msprop:Generator_RowChangedName="dtKnjiznoOdobrenjeRowChanged" msprop:Generator_RowClassName="dtKnjiznoOdobrenjeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_knjizno_odobrenje" msprop:Generator_ColumnVarNameInTable="columnid_knjizno_odobrenje" msprop:Generator_ColumnPropNameInRow="id_knjizno_odobrenje" msprop:Generator_ColumnPropNameInTable="id_knjizno_odobrenjeColumn" msprop:Generator_UserColumnName="id_knjizno_odobrenje" type="xs:int" minOccurs="0" />
+              <xs:element name="broj_odobrenje" msprop:Generator_ColumnVarNameInTable="columnbroj_odobrenje" msprop:Generator_ColumnPropNameInRow="broj_odobrenje" msprop:Generator_ColumnPropNameInTable="broj_odobrenjeColumn" msprop:Generator_UserColumnName="broj_odobrenje" type="xs:int" minOccurs="0" />
+              <xs:element name="datum" msprop:Generator_ColumnVarNameInTable="columndatum" msprop:Generator_ColumnPropNameInRow="datum" msprop:Generator_ColumnPropNameInTable="datumColumn" msprop:Generator_UserColumnName="datum" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="broj_fakture" msprop:Generator_ColumnVarNameInTable="columnbroj_fakture" msprop:Generator_ColumnPropNameInRow="broj_fakture" msprop:Generator_ColumnPropNameInTable="broj_faktureColumn" msprop:Generator_UserColumnName="broj_fakture" type="xs:int" minOccurs="0" />
+              <xs:element name="id_ducan" msprop:Generator_ColumnVarNameInTable="columnid_ducan" msprop:Generator_ColumnPropNameInRow="id_ducan" msprop:Generator_ColumnPropNameInTable="id_ducanColumn" msprop:Generator_UserColumnName="id_ducan" type="xs:int" minOccurs="0" />
+              <xs:element name="id_kasa" msprop:Generator_ColumnVarNameInTable="columnid_kasa" msprop:Generator_ColumnPropNameInRow="id_kasa" msprop:Generator_ColumnPropNameInTable="id_kasaColumn" msprop:Generator_UserColumnName="id_kasa" type="xs:int" minOccurs="0" />
+              <xs:element name="id_ducan_faktura" msprop:Generator_ColumnVarNameInTable="columnid_ducan_faktura" msprop:Generator_ColumnPropNameInRow="id_ducan_faktura" msprop:Generator_ColumnPropNameInTable="id_ducan_fakturaColumn" msprop:Generator_UserColumnName="id_ducan_faktura" type="xs:int" minOccurs="0" />
+              <xs:element name="id_kasa_faktura" msprop:Generator_ColumnVarNameInTable="columnid_kasa_faktura" msprop:Generator_ColumnPropNameInRow="id_kasa_faktura" msprop:Generator_ColumnPropNameInTable="id_kasa_fakturaColumn" msprop:Generator_UserColumnName="id_kasa_faktura" type="xs:int" minOccurs="0" />
+              <xs:element name="id_izradio" msprop:Generator_ColumnVarNameInTable="columnid_izradio" msprop:Generator_ColumnPropNameInRow="id_izradio" msprop:Generator_ColumnPropNameInTable="id_izradioColumn" msprop:Generator_UserColumnName="id_izradio" type="xs:int" minOccurs="0" />
+              <xs:element name="porez_odobrenja" msprop:Generator_ColumnVarNameInTable="columnporez_odobrenja" msprop:Generator_ColumnPropNameInRow="porez_odobrenja" msprop:Generator_ColumnPropNameInTable="porez_odobrenjaColumn" msprop:Generator_UserColumnName="porez_odobrenja" type="xs:decimal" minOccurs="0" />
+              <xs:element name="faktura_iznos" msprop:Generator_ColumnVarNameInTable="columnfaktura_iznos" msprop:Generator_ColumnPropNameInRow="faktura_iznos" msprop:Generator_ColumnPropNameInTable="faktura_iznosColumn" msprop:Generator_UserColumnName="faktura_iznos" type="xs:decimal" minOccurs="0" />
+              <xs:element name="faktura_porez" msprop:Generator_ColumnVarNameInTable="columnfaktura_porez" msprop:Generator_ColumnPropNameInRow="faktura_porez" msprop:Generator_ColumnPropNameInTable="faktura_porezColumn" msprop:Generator_UserColumnName="faktura_porez" type="xs:decimal" minOccurs="0" />
+              <xs:element name="fUkp" msprop:Generator_ColumnVarNameInTable="columnfUkp" msprop:Generator_ColumnPropNameInRow="fUkp" msprop:Generator_ColumnPropNameInTable="fUkpColumn" msprop:Generator_UserColumnName="fUkp" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ukupno_porez" msprop:Generator_ColumnVarNameInTable="columnukupno_porez" msprop:Generator_ColumnPropNameInRow="ukupno_porez" msprop:Generator_ColumnPropNameInTable="ukupno_porezColumn" msprop:Generator_UserColumnName="ukupno_porez" type="xs:decimal" minOccurs="0" />
+              <xs:element name="fUkpNew" msprop:Generator_ColumnVarNameInTable="columnfUkpNew" msprop:Generator_ColumnPropNameInRow="fUkpNew" msprop:Generator_ColumnPropNameInTable="fUkpNewColumn" msprop:Generator_UserColumnName="fUkpNew" type="xs:decimal" minOccurs="0" />
+              <xs:element name="fUkpPorezNew" msprop:Generator_ColumnVarNameInTable="columnfUkpPorezNew" msprop:Generator_ColumnPropNameInRow="fUkpPorezNew" msprop:Generator_ColumnPropNameInTable="fUkpPorezNewColumn" msprop:Generator_UserColumnName="fUkpPorezNew" type="xs:decimal" minOccurs="0" />
+              <xs:element name="rb" msprop:Generator_ColumnVarNameInTable="columnrb" msprop:Generator_ColumnPropNameInRow="rb" msprop:Generator_ColumnPropNameInTable="rbColumn" msprop:Generator_UserColumnName="rb" type="xs:int" minOccurs="0" />
+              <xs:element name="datum_fakture" msprop:Generator_ColumnVarNameInTable="columndatum_fakture" msprop:Generator_ColumnPropNameInRow="datum_fakture" msprop:Generator_ColumnPropNameInTable="datum_faktureColumn" msprop:Generator_UserColumnName="datum_fakture" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

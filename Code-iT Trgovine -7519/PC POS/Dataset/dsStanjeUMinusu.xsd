@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsStanjeUMinusu" targetNamespace="http://tempuri.org/dsStanjeUMinusu.xsd" xmlns:mstns="http://tempuri.org/dsStanjeUMinusu.xsd" xmlns="http://tempuri.org/dsStanjeUMinusu.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsStanjeUMinusu" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsStanjeUMinusu" msprop:Generator_UserDSName="dsStanjeUMinusu">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtStanjeUMinusu" msprop:Generator_TableClassName="dtStanjeUMinusuDataTable" msprop:Generator_TableVarName="tabledtStanjeUMinusu" msprop:Generator_TablePropName="dtStanjeUMinusu" msprop:Generator_RowDeletingName="dtStanjeUMinusuRowDeleting" msprop:Generator_UserTableName="dtStanjeUMinusu" msprop:Generator_RowChangingName="dtStanjeUMinusuRowChanging" msprop:Generator_RowEvHandlerName="dtStanjeUMinusuRowChangeEventHandler" msprop:Generator_RowDeletedName="dtStanjeUMinusuRowDeleted" msprop:Generator_RowEvArgName="dtStanjeUMinusuRowChangeEvent" msprop:Generator_RowChangedName="dtStanjeUMinusuRowChanged" msprop:Generator_RowClassName="dtStanjeUMinusuRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sifra" msprop:Generator_ColumnVarNameInTable="columnsifra" msprop:Generator_ColumnPropNameInRow="sifra" msprop:Generator_ColumnPropNameInTable="sifraColumn" msprop:Generator_UserColumnName="sifra" type="xs:string" minOccurs="0" />
+              <xs:element name="naziv" msprop:Generator_ColumnVarNameInTable="columnnaziv" msprop:Generator_ColumnPropNameInRow="naziv" msprop:Generator_ColumnPropNameInTable="nazivColumn" msprop:Generator_UserColumnName="naziv" type="xs:string" minOccurs="0" />
+              <xs:element name="kolicina" msprop:Generator_ColumnVarNameInTable="columnkolicina" msprop:Generator_ColumnPropNameInRow="kolicina" msprop:Generator_ColumnPropNameInTable="kolicinaColumn" msprop:Generator_UserColumnName="kolicina" type="xs:string" minOccurs="0" />
+              <xs:element name="skladiste" msprop:Generator_ColumnVarNameInTable="columnskladiste" msprop:Generator_ColumnPropNameInRow="skladiste" msprop:Generator_ColumnPropNameInTable="skladisteColumn" msprop:Generator_UserColumnName="skladiste" type="xs:string" minOccurs="0" />
+              <xs:element name="id_skladiste" msprop:Generator_ColumnVarNameInTable="columnid_skladiste" msprop:Generator_ColumnPropNameInRow="id_skladiste" msprop:Generator_ColumnPropNameInTable="id_skladisteColumn" msprop:Generator_UserColumnName="id_skladiste" type="xs:string" minOccurs="0" />
+              <xs:element name="br" msprop:Generator_ColumnVarNameInTable="columnbr" msprop:Generator_ColumnPropNameInRow="br" msprop:Generator_ColumnPropNameInTable="brColumn" msprop:Generator_UserColumnName="br" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
