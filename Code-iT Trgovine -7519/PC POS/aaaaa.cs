@@ -12,6 +12,7 @@ namespace PCPOS
     {
         public aaaaa()
         {
+            // neje aaaaa nego bbbbbb
             InitializeComponent();
         }
         
