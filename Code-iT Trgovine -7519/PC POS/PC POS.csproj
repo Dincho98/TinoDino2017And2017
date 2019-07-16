@@ -205,6 +205,12 @@
     <Compile Include="Dataset\DSRliste.cs">
       <DependentUpon>DSRliste.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DelaJosJenput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DelaJosJenput.Designer.cs">
+      <DependentUpon>DelaJosJenput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Faktura.cs" />
     <Compile Include="Entities\FakturaStavke.cs" />
     <Compile Include="Entities\Gost.cs" />
@@ -2402,6 +2408,9 @@
     </Compile>
     <EmbeddedResource Include="aaaaa.resx">
       <DependentUpon>aaaaa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DelaJosJenput.resx">
+      <DependentUpon>DelaJosJenput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmOtpremnicaNaSkladiste.resx">
       <DependentUpon>frmOtpremnicaNaSkladiste.cs</DependentUpon>
