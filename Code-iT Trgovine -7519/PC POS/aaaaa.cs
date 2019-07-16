@@ -20,6 +20,9 @@ namespace PCPOS
             Fiskalizacija("47165970760", "74119445654");
         }
 
+        /// <summary>
+        /// Idemo sjebati xdddddd
+        /// </summary>
         private DataTable DTfis = classSQL.select_settings("SELECT oznaka_slijednosti FROM fiskalizacija", "fiskalizacija").Tables[0];
 
         private void Fiskalizacija(string oib, string oib_operatera)
